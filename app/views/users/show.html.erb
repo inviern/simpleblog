@@ -6,6 +6,6 @@
 <%= @user.email %><br>
 <%= link_to "Blog", blog_path(author: @user.name) %> |
 <%= link_to "Edit", edit_profile_path %> |
-<%= link_to "Delete", delete_profile_path, method: :delete %><br>
+<%= link_to "Delete", user_path, method: :delete %><br>
 <br>
 <%= link_to "All users", users_path %>
