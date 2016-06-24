@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-  has_many :posts
+  has_many :posts, dependent: :destroy
 
   authenticates_with_sorcery!
 
