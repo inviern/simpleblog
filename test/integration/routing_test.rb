@@ -39,11 +39,11 @@ class RoutingTest < ActionDispatch::IntegrationTest
 
   # posts
   test "posts#index" do
-    assert_routing 'posts/test', controller: 'posts', action: 'index', user_name: 'test'
+    assert_routing 'posts/test', controller: 'posts', action: 'index', author: 'test'
   end
 
   test "posts#show" do
-    assert_routing 'posts/test/1', controller: 'posts', action: 'show', user_name: 'test', id: '1'
+    assert_routing 'posts/test/1', controller: 'posts', action: 'show', author: 'test', id: '1'
   end
 
   test "posts#new" do

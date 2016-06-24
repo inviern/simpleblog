@@ -6,12 +6,12 @@ Rails.application.routes.draw do
   get     'profile/edit',         to: 'users#edit',   as: :edit_user
   resources :users, only: [:index, :show, :create, :update, :destroy]
 
-  get     'posts/:user_name',           to: 'posts#index',  as: :posts
-  get     'posts/:user_name/:id',       to: 'posts#show',   as: :post
-  get     'new',                        to: 'posts#new',    as: :new_post
-  get     'edit/:id',                   to: 'posts#edit',   as: :edit_post
-  post    'posts',                      to: 'posts#create'
-  patch   'posts/:id',                  to: 'posts#update'
-  delete  'posts/:id',                  to: 'posts#destroy'
+  get     'posts/:author',           to: 'posts#index',    as: :posts
+  get     'posts/:author/:id',       to: 'posts#show',     as: :post
+  get     'new',                     to: 'posts#new',      as: :new_post
+  get     'edit/:id',                to: 'posts#edit',     as: :edit_post
+  post    'posts',                   to: 'posts#create',   as: :create_post
+  patch   'posts/:id',               to: 'posts#update',   as: :update_post
+  delete  'posts/:id',               to: 'posts#destroy',  as: :delete_post
 
 end
