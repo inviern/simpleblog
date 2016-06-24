@@ -18,7 +18,7 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should get edit" do
-    get :edit, id: 1
+    get :edit
     assert_response :success
   end
 end

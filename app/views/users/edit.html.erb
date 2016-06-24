@@ -1,1 +1,7 @@
+<% provide(:title, "Edit #{@user.name}'s profile") %>
+
 <h1>Users#edit</h1>
+
+<%= render 'form' %>
+
+<%= link_to "All users", users_path %>

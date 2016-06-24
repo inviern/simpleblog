@@ -1,1 +1,11 @@
+<% provide(:title, "#{@user.name}'s profile") %>
+
 <h1>Users#show</h1>
+
+<b><%= @user.name %></b><br>
+<%= @user.email %><br>
+<%= link_to "Posts", posts_path(author: @user.name) %>
+| <%= link_to "Edit", edit_profile_path %>
+| <%= link_to "Delete", delete_profile_path, method: :delete %>
+<br>
+<%= link_to "All users", users_path %>
