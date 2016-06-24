@@ -1,0 +1,11 @@
+first:
+  id: 1
+  title: "First example post title"
+  text: "First example post text"
+  user_id: 1
+
+second:
+  id: 2
+  title: "Second example post title"
+  text: "Second example post text"
+  user_id: 2
