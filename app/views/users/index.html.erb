@@ -5,7 +5,7 @@
 <% @users.each do |user| %>
     <b><%= user.name %></b><br>
     registered: <%= user.created_at.to_datetime.to_s(:long) %><br>
-    <%= link_to "Profile", user_path(user) %> |
-    <%= link_to "Posts", posts_path(author: user.name) %><br>
+    <%= link_to "Blog", blog_path(author: user.name) %> |
+    <%= link_to "Profile", user_path(user) %><br>
     <br>
 <% end %>
