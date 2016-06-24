@@ -1,2 +1,15 @@
+<% provide(:title, "Simpleblog") %>
+
 <h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+
+<% @posts.each do |post| %>
+    <b><%= post.title %></b><br>
+    by <%= post.author.name %><br>
+    <%= post.created_at.to_datetime.to_s(:long) %><br>
+    <%= post.text %><br>
+    <%= link_to "Show", post_path(author: post.author.name, id: post) %>
+    | <%= link_to "Edit", edit_post_path(post) %>
+    | <%= link_to "Delete", delete_post_path(post), method: :delete %>
+    <br>
+    <br>
+<% end %>

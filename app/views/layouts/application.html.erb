@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Simpleblog</title>
+  <title><%= yield(:title) %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+<%= link_to "Home", root_path %>
+| Logged out
+| <%= link_to "Sign up", signup_path %>
+
+<% if flash.notice %>
+    <p><%= flash.notice %></p>
+<% end %>
 
 <%= yield %>
 
