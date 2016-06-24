@@ -29,11 +29,11 @@ class RoutingTest < ActionDispatch::IntegrationTest
   end
 
   test "users#update" do
-    assert_routing({ path: "users/1", method: :patch }, controller: 'users', action: 'update', id: '1')
+    assert_routing({ path: "profile", method: :patch }, controller: 'users', action: 'update')
   end
 
   test "users#destroy" do
-    assert_routing({ path: "users/1", method: :delete }, controller: 'users', action: 'destroy', id: '1')
+    assert_routing({ path: "profile", method: :delete }, controller: 'users', action: 'destroy')
   end
 
 
