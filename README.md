@@ -1,0 +1,1 @@
+A simple blog application written for training.
