@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 
+  has_many :posts
+
   authenticates_with_sorcery!
 
   before_save { self.email = email.downcase }
