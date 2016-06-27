@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
 
+  before_filter :for_logged_in, only: [:index, :edit, :update, :destroy]
+  before_filter :for_logged_out, only: [:new, :create]
+
   def index
     @users = User.all.order(:id)
   end
@@ -13,7 +16,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = current_user || User.first # TODO remove || User.first
+    @user = current_user
   end
 
   def create
@@ -26,7 +29,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = current_user || User.first # TODO remove || User.first
+    @user = current_user
     if @user.update(user_params)
       redirect_to @user
     else
@@ -35,7 +38,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = current_user || User.first # TODO remove || User.first
+    @user = current_user
     if @user.destroy
       redirect_to users_path
     else
