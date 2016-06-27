@@ -1,16 +1,20 @@
 class SessionsController < ApplicationController
+
+  before_filter :for_logged_out, only: [:new, :create]
+  before_filter :for_logged_in, only: [:destroy]
+
   def new
   end
 
   def create
-    if login(params[:email], params[:password])
-      redirect_back_or_to(blog_path)
+    if login(params[:session][:email], params[:session][:password])
+      redirect_to blog_path(current_user.name)
     else
       render 'new'
     end
   end
 
-  def delete
+  def destroy
     logout
     redirect_to root_path
   end

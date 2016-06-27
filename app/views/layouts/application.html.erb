@@ -9,8 +9,16 @@
 <body>
 
 <%= link_to "Home", root_path %>
-| Logged out
-| <%= link_to "Sign up", signup_path %>
+<% if logged_in? %>
+  | Logged in as <%= current_user.name %>
+  | <%= link_to "New post", new_post_path %>
+  | <%= link_to "Profile", user_path(current_user) %>
+  | <%= link_to "Log out", logout_path, method: :delete %>
+<% else %>
+  | Logged out
+  | <%= link_to "Log in", login_path %>
+  | <%= link_to "Sign up", signup_path %>
+<% end %>
 
 <% if flash.notice %>
     <p><%= flash.notice %></p>
