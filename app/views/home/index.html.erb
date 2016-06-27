@@ -7,8 +7,11 @@
     by <%= post.author.name %><br>
     <%= post.created_at.to_datetime.to_s(:long) %><br>
     <%= post.text %><br>
-    <%= link_to "Show", blog_post_path(author: post.author.name, id: post) %> |
-    <%= link_to "Edit", edit_post_path(post) %> |
-    <%= link_to "Delete", post_path(post), method: :delete %> <br>
+    <%= link_to "Show", blog_post_path(author: post.author.name, id: post) %>
+    <% if current_user == post.author %>
+    | <%= link_to "Edit", edit_post_path(post) %>
+    | <%= link_to "Delete", post_path(post), method: :delete %> <br>
+    <% end %>
+    <br>
     <br>
 <% end %>

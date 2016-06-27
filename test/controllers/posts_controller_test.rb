@@ -17,14 +17,8 @@ class PostsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get new" do
-    get :new
-    assert_response :success
-  end
+  # test "should get new" moved to auth integration tests
 
-  test "should get edit" do
-    get :edit, id: @post
-    assert_response :success
-  end
+  # test "should get edit" moved to auth integration tests
 
 end

@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+
+  before_filter :for_logged_in, only: [:new, :edit, :create, :update]
+
   def index
     @author = User.find_by(name: params[:author])
     @posts = Post.where(author: @author)
@@ -10,16 +13,17 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @post.author = current_user || User.first # TODO remove || User.first
+    @post.author = current_user
   end
 
   def edit
-    current_user ||= User.first # TODO remove
-    @post = Post.where(author: current_user).find(params[:id])
+    @post = Post.find(params[:id])
+    unless current_user == @post.author
+      redirect_to root_path
+    end
   end
 
   def create
-    current_user ||= User.first # TODO remove
     @post = Post.new(post_params)
     @post.author = current_user
     if @post.save
@@ -30,22 +34,28 @@ class PostsController < ApplicationController
   end
 
   def update
-    current_user ||= User.first # TODO remove
-    @post = Post.where(author: current_user).find(params[:id])
-    if @post.update(post_params)
-      redirect_to blog_path(current_user.name)
+    @post = Post.find(params[:id])
+    if current_user == @post.author
+      if @post.update(post_params)
+        redirect_to blog_path(current_user.name)
+      else
+        render 'edit'
+      end
     else
-      render 'edit'
+      redirect_to root_path
     end
   end
 
   def destroy
-    current_user ||= User.first # TODO remove
-    @post = Post.where(author: current_user).find(params[:id])
-    if @post.destroy
-      redirect_to blog_path(current_user.name)
+    @post = Post.find(params[:id])
+    if current_user == @post.author
+      if @post.destroy
+        redirect_to blog_path(current_user.name)
+      else
+        render 'show'
+      end
     else
-      render 'show'
+      redirect_to root_path
     end
   end
 
