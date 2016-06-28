@@ -1,11 +1,6 @@
 <%= form_for @post do |f| %>
 
-    <% if @post.errors.any? %>
-        <% @post.errors.full_messages.each do |message| %>
-            <span class="field_with_errors"><%= message %><br></span>
-        <% end %>
-        <br>
-    <% end  %>
+    <%= render partial: 'shared/error_messages', locals: { object: @post} %>
 
     <%= f.label :title %><br>
     <%= f.text_field :title %><br>
