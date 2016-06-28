@@ -58,6 +58,11 @@ class UsersControllerTest < ActionController::TestCase
     assert_redirected_to root_path
   end
 
+  test "user should log in after signup" do
+    post :create, user: { name: "newuser", email: "newuser@example.com", password: "password", password_confirmation: "password" }
+    assert logged_in?
+  end
+
   # update
   test "non-authorized users should not be able to update user profiles" do
     patch :update, id: @user.id
