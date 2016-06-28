@@ -70,5 +70,4 @@ class PostsControllerTest < ActionController::TestCase
     delete :destroy, id: @post.id
     assert_redirected_to root_path
   end
-
 end

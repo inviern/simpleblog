@@ -6,11 +6,10 @@
 by <%= @post.author.name %><br>
 <%= @post.created_at.to_datetime.to_s(:long) %><br>
 <%= @post.text %><br>
-<br>
 <% if current_user == @post.author %>
   <%= link_to "Edit", edit_post_path(@post) %> |
   <%= link_to "Delete", post_path(@post), method: :delete %><br>
 <% end %>
 <br>
 
-<%= link_to "#{@post.author.name}'s blog", blog_path(@post.author.name) %><br>
+<%= link_to "All posts", blog_path(@post.author.name) %><br>

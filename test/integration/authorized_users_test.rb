@@ -14,6 +14,11 @@ class AuthorizedUsersTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", new_post_path
   end
 
+  test "logged in users should see their blog link after new post link" do
+    get root_path
+    assert_select "a[href=?]+a[href=?]", new_post_path, blog_path(@user.name)
+  end
+
   test "logged in users should see profile link" do
     get root_path
     assert_select "a[href=?]", user_path(@user)

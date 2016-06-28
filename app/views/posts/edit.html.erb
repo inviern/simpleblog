@@ -1,7 +1,7 @@
-<% provide(:title, "Edit #{@post.title}") %>
+<% provide(:title, "Edit post") %>
 
 <h1>Posts#edit</h1>
 
 <%= render 'form' %>
-
-<%= link_to "All posts", blog_path(@post.author.name) %>
+<br>
+<%= link_to "Cancel", blog_path(@post.author.name) %>
