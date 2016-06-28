@@ -38,7 +38,7 @@ class AuthorizedUsersTest < ActionDispatch::IntegrationTest
   # Profile page (users#show)
   test "authorized users should see links to edit their own profile" do
     get user_path(@user)
-    assert_select "a[href=?]", edit_profile_path
+    assert_select "a[href=?]", edit_user_path
   end
 
   test "authorized users should see links to delete their own profile" do
@@ -48,7 +48,7 @@ class AuthorizedUsersTest < ActionDispatch::IntegrationTest
 
   test "authorized users should not see links to edit other user profiles" do
     get user_path(@another_user)
-    assert_select "a[href=?]", edit_profile_path, count: 0
+    assert_select "a[href=?]", edit_user_path, count: 0
   end
 
   test "authorized users should not see links to delete other user profiles" do

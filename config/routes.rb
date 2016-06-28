@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   get       'signup',           to: 'users#new'
-  get       'profile/edit',     to: 'users#edit',     as: :edit_profile
+  get       'profile/edit',     to: 'users#edit',     as: :edit_user
   resources :users, only: [:index, :show, :create, :update, :destroy]
 
   get       'blog/:author',     to: 'posts#index',    as: :blog

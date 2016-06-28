@@ -31,7 +31,7 @@ class NonAuthorizedUsersTest < ActionDispatch::IntegrationTest
   # Profile page (users#show)
   test "non-authorized users should not see links to edit user profiles" do
     get user_path(@user)
-    assert_select "a[href=?]", edit_profile_path(@user), count: 0
+    assert_select "a[href=?]", edit_user_path(@user), count: 0
   end
 
   test "non-authorized users should not see links to delete user profiles" do
