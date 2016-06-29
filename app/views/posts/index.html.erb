@@ -1,17 +1,30 @@
 <% provide(:title, "Blog | #{@author.name}") %>
 
-<h1>Posts#index</h1>
-
-<% @posts.each do |post| %>
-    <b><%= post.title %></b><br>
-    by <%= post.author.name %><br>
-    <%= post.created_at.to_datetime.to_s(:long) %><br>
-    <%= post.text %><br>
-    <%= link_to "Show", blog_post_path(@author.name, post) %>
-    <% if current_user == post.author %>
-      | <%= link_to "Edit", edit_post_path(post) %>
-      | <%= link_to "Delete", post_path(post), method: :delete %><br>
+<div class="row">
+  <div class="col-md-8">
+    <h1 class="page-header">
+      <%= @author.name %>'s blog
+      <small>Recent posts</small>
+    </h1>
+    <% @posts.each do |post| %>
+      <h2>
+        <%= link_to post.title, blog_post_path(@author.name, post) %>
+      </h2>
+      <p class="post-datetime"><span class="glyphicon glyphicon-time"></span> <%= post.created_at.to_datetime.to_s(:long) %></p>
+      <p>
+        <%= post.text %>
+      </p>
+      <div class="btn-container">
+        <%= link_to "Show", blog_post_path(@author.name, post) %>
+        <% if current_user == post.author %>
+          <%= link_to ('<small><span class="glyphicon glyphicon-pencil"></span></small> Edit').html_safe, edit_post_path(post) %>
+          <%= link_to ('<small><span class="glyphicon glyphicon-remove"></span></small>').html_safe, post_path(post), method: :delete, class: 'pull-right' %>
+        <% end %>
+      </div>
+      <hr>
     <% end %>
-    <br>
-    <br>
-<% end %>
+    <div class="btn-container">
+      <%= link_to ('<small><span class="glyphicon glyphicon-menu-left"></span></small> Home').html_safe, root_path %>
+    </div>
+  </div>
+</div>

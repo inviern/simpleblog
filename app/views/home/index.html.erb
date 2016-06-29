@@ -13,8 +13,7 @@
       <p class="lead">
         by <%= link_to post.author.name, user_path(post.author) %>
       </p>
-      <p><span class="glyphicon glyphicon-time"></span> Posted on <%= post.created_at.to_datetime.to_s(:long) %></p>
-      <hr>
+      <p class="post-datetime"><span class="glyphicon glyphicon-time"></span> <%= post.created_at.to_datetime.to_s(:long) %></p>
       <p>
         <%= post.text %>
       </p>

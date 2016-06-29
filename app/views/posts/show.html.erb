@@ -1,15 +1,23 @@
 <% provide(:title, "#{@post.title}") %>
 
-<h1>Posts#show</h1>
-
-<b><%= @post.title %></b><br>
-by <%= @post.author.name %><br>
-<%= @post.created_at.to_datetime.to_s(:long) %><br>
-<%= @post.text %><br>
+<div class="row">
+  <div class="col-lg-8">
+    <h1 class="page-header"><%= @post.title %></h1>
+    <p class="lead">
+      by <%= link_to @post.author.name, user_path(@post.author) %>
+    </p>
+    <p class="post-datetime"><span class="glyphicon glyphicon-time"></span> <%= @post.created_at.to_datetime.to_s(:long) %></p>
+    <p>
+      <%= @post.text %>
+    </p>
+  </div>
+</div>
 <% if current_user == @post.author %>
-  <%= link_to "Edit", edit_post_path(@post) %> |
-  <%= link_to "Delete", post_path(@post), method: :delete %><br>
+  <div class="btn-container">
+    <%= link_to "Edit", edit_post_path(@post), class: 'btn btn-primary' %>
+    <%= link_to ('<small>Delete post</small>').html_safe, post_path(@post), method: :delete %><br>
+</div>
 <% end %>
-<br>
-
-<%= link_to "All posts", blog_path(@post.author.name) %><br>
+<div class="btn-container">
+  <%= link_to ('<small><span class="glyphicon glyphicon-menu-left"></span></small> All posts').html_safe, blog_path(@post.author.name) %><br>
+</div>

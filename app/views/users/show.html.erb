@@ -7,7 +7,7 @@
       <div class="media-body">
         <h4 class="media-heading"><%= @user.name %></h4>
         <% if current_user == @user %>
-          <p><b>testuser@example.com</b></p>
+          <p><b><%= @user.email %></b></p>
         <% end %>
         <small>registered at <%= @user.created_at.to_datetime.to_s(:long) %></small>
         <br>

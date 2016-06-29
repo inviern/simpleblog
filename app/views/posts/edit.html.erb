@@ -1,7 +1,8 @@
 <% provide(:title, "Edit post") %>
 
-<h1>Posts#edit</h1>
-
-<%= render 'form' %>
-<br>
-<%= link_to "Cancel", blog_path(@post.author.name) %>
+<div class="row">
+  <div class="col-lg-8">
+    <h1 class="page-header">Edit post</h1>
+    <%= render partial: 'form', locals: { submit_name: 'Save' } %>
+  </div>
+</div>

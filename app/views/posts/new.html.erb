@@ -1,7 +1,8 @@
 <% provide(:title, "New post") %>
 
-<h1>Posts#new</h1>
-
-<%= render 'form' %>
-<br>
-<%= link_to "Cancel", blog_path(@post.author.name) %>
+<div class="row">
+  <div class="col-lg-8">
+    <h1 class="page-header">New post</h1>
+    <%= render partial: 'form', locals: { submit_name: 'Create' } %>
+  </div>
+</div>
