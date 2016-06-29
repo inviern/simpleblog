@@ -1,6 +1,7 @@
 <% if object.errors.any? %>
-    <% object.errors.full_messages.each do |message| %>
-        <span class="field_with_errors"><%= message %><br></span>
-    <% end %>
-    <br>
+    <div class="alert alert-danger">
+      <% object.errors.full_messages.each do |message| %>
+          <span class="field_with_errors"><%= message %><br></span>
+      <% end %>
+    </div>
 <% end  %>

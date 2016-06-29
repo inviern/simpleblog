@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <title><%= yield(:title) %></title>
@@ -35,36 +35,36 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <% if logged_in? %>
-          <ul class="nav navbar-nav">
-            <li>
-              <%= link_to "Blog", blog_path(current_user.name) %>
-            </li>
-            <li>
-              <%= link_to "New post", new_post_path %>
-            </li>
-            <li>
-              <%= link_to "Profile", user_path(current_user) %>
-            </li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-              <%= link_to current_user.name, user_path(current_user), class: "navbar-info" %>
-            </li>
-            <li>
-              <%= link_to "Log out", logout_path, method: :delete %>
-            </li>
-          </ul>
+        <ul class="nav navbar-nav">
+          <li>
+            <%= link_to "Blog", blog_path(current_user.name) %>
+          </li>
+          <li>
+            <%= link_to "New post", new_post_path %>
+          </li>
+          <li>
+            <%= link_to "Profile", user_path(current_user) %>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <%= link_to current_user.name, user_path(current_user), class: "navbar-info" %>
+          </li>
+          <li>
+            <%= link_to "Log out", logout_path, method: :delete %>
+          </li>
+        </ul>
       <% else %>
-          <ul class="nav navbar-nav">
-            <li>
-              <%= link_to "Log in", login_path %>
-            </li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-              <%= link_to "Sign up", signup_path %>
-            </li>
-          </ul>
+        <ul class="nav navbar-nav">
+          <li>
+            <%= link_to "Log in", login_path %>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <%= link_to "Sign up", signup_path %>
+          </li>
+        </ul>
       <% end %>
     </div>
   </div>
@@ -74,14 +74,12 @@
 <div class="container">
 
   <% if flash.notice %>
-      <div class="alert alert-success">
-        <%= flash.notice %>
-      </div>
+    <div class="alert alert-success">
+      <%= flash.notice %>
+    </div>
   <% end %>
 
-  <div class="row">
-    <%= yield %>
-  </div>
+  <%= yield %>
 
   <footer></footer>
 </div>

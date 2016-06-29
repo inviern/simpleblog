@@ -1,16 +1,28 @@
 <% provide(:title, "Profile | #{@user.name}") %>
 
-<h1>Users#show</h1>
-
-<b><%= @user.name %></b><br>
-<%= @user.email %><br>
-<%= link_to "Blog", blog_path(author: @user.name) %>
-<% if current_user == @user %>
-    | <%= link_to "Edit", edit_user_path %>
-    | <%= link_to "Delete", user_path, method: :delete %>
-<% end %>
-<br>
-<br>
-<% if logged_in? %>
-  <%= link_to "Users", users_path %>
-<% end %>
+<div class="row">
+  <div class="col-lg-8">
+    <h1 class="page-header"><%= @user.name %>'s profile</h1>
+    <div class="media">
+      <div class="media-body">
+        <h4 class="media-heading"><%= @user.name %></h4>
+        <% if current_user == @user %>
+          <p><b>testuser@example.com</b></p>
+        <% end %>
+        <small>registered at <%= @user.created_at.to_datetime.to_s(:long) %></small>
+        <br>
+        <% if current_user == @user %>
+          <div class="btn-container">
+            <%= link_to "Edit profile", edit_user_path, class: 'btn btn-primary' %>
+            <%= link_to ('<small>Delete account</small>').html_safe, user_path, method: :delete %>
+          </div>
+        <% end %>
+        <% if logged_in? %>
+            <div class="btn-container">
+              <%= link_to ('<small><span class="glyphicon glyphicon-menu-left"></span></small> All users').html_safe, users_path %>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
