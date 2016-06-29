@@ -53,3 +53,6 @@ group :production do
   gem 'pg'
   gem 'rails_12factor'
 end
+
+# Bootstrap
+gem 'bootstrap-sass'
