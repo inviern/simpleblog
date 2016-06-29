@@ -55,4 +55,4 @@ group :production do
 end
 
 # Bootstrap
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '3.3.6'

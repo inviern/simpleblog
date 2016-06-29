@@ -1,2 +1,45 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
+
+body {
+  padding-top: 70px;
+}
+
+footer {
+  margin: 50px 0;
+}
+
+.navbar-info {
+  color: #fff!important;
+}
+
+.btn-container {
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+.btn-container a {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.btn-container .btn {
+  min-width: 100px;
+  margin-right: 10px;
+}
+
+.btn-container a.btn-secondary {
+  color: #373a3c;
+  background-color: #ffffff;
+  border: 1px solid #adadad;
+}
+
+.btn-container a.btn-secondary:hover {
+  color: #373a3c;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+
+.field-with-errors {
+  border-color: #a94442;
+}
