@@ -23,6 +23,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       login(@user.email, params[:user][:password])
+      flash[:success] = "Account <b>#{@user.name}</b> created"
       redirect_to @user
     else
       render 'new'
@@ -32,6 +33,7 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
+      flash[:success] = "Account updated"
       redirect_to @user
     else
       render 'edit'
@@ -41,6 +43,7 @@ class UsersController < ApplicationController
   def destroy
     @user = current_user
     if @user.destroy
+      flash[:success] = "Account deleted"
       redirect_to users_path
     else
       render 'show'

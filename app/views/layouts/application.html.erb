@@ -73,10 +73,10 @@
 <!-- Page Content -->
 <div class="container">
 
-  <% if flash.notice %>
-    <div class="alert alert-success">
-      <%= flash.notice %>
-    </div>
+  <% flash.each do |message_type, message| %>
+      <div class="alert alert-<%= message_type %>">
+        <%= message.html_safe unless message.blank? %>
+      </div>
   <% end %>
 
   <%= yield %>
