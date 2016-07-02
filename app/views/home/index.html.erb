@@ -21,7 +21,8 @@
         <%= link_to "Read", blog_post_path(author: post.author.name, id: post) %>
         <% if current_user == post.author %>
             <%= link_to ('<small><span class="glyphicon glyphicon-pencil"></span></small> Edit').html_safe, edit_post_path(post) %>
-            <%= link_to ('<small><span class="glyphicon glyphicon-remove"></span></small>').html_safe, post_path(post), method: :delete, class: 'pull-right' %>
+            <%= link_to ('<small><span class="glyphicon glyphicon-remove"></span></small>').html_safe,
+                  post_path(post), method: :delete, class: 'pull-right', data: { confirm: "Delete post?" } %>
         <% end %>
       </div>
       <hr>

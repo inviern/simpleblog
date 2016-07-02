@@ -14,7 +14,8 @@
         <% if current_user == @user %>
           <div class="btn-container">
             <%= link_to "Edit profile", edit_user_path, class: 'btn btn-primary' %>
-            <%= link_to ('<small>Delete account</small>').html_safe, user_path, method: :delete %>
+            <%= link_to ('<small>Delete account</small>').html_safe,
+              user_path, method: :delete, data: { confirm: "Delete account?" } %>
           </div>
         <% end %>
         <% if logged_in? %>
