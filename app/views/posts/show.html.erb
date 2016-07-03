@@ -4,7 +4,7 @@
   <div class="col-lg-8">
     <h1 class="page-header"><%= @post.title %></h1>
     <p class="lead">
-      by <%= link_to @post.author.name, user_path(@post.author) %>
+      by <%= link_to @post.author.name, blog_path(@post.author.name) %>
     </p>
     <p class="post-datetime"><span class="glyphicon glyphicon-time"></span> <%= @post.created_at.to_datetime.to_s(:long) %></p>
     <p>

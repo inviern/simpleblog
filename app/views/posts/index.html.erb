@@ -1,4 +1,4 @@
-<% provide(:title, "Blog | #{@author.name}") %>
+<% provide(:title, "#{@author.name} | #{default_title}") %>
 
 <div class="row">
   <div class="col-md-8">
@@ -6,6 +6,10 @@
       <%= @author.name %>'s blog
       <small>Recent posts</small>
     </h1>
+    <div class="btn-container">
+      <%= link_to '<small><span class="glyphicon glyphicon-user"></span></small> Profile'.html_safe, user_path(@author) %>
+    </div>
+    <hr>
     <% @posts.each do |post| %>
       <h2>
         <%= link_to post.title, blog_post_path(@author.name, post) %>

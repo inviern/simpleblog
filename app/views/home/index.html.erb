@@ -1,4 +1,4 @@
-<% provide(:title, "Simpleblog") %>
+<% provide(:title, default_title) %>
 
 <div class="row">
   <div class="col-md-8">
@@ -11,7 +11,7 @@
         <%= link_to post.title, blog_post_path(author: post.author.name, id: post) %>
       </h2>
       <p class="lead">
-        by <%= link_to post.author.name, user_path(post.author) %>
+        by <%= link_to post.author.name, blog_path(post.author.name) %>
       </p>
       <p class="post-datetime"><span class="glyphicon glyphicon-time"></span> <%= post.created_at.to_datetime.to_s(:long) %></p>
       <p>

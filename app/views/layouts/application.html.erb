@@ -35,36 +35,9 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <% if logged_in? %>
-        <ul class="nav navbar-nav">
-          <li>
-            <%= link_to "Blog", blog_path(current_user.name) %>
-          </li>
-          <li>
-            <%= link_to "New post", new_post_path %>
-          </li>
-          <li>
-            <%= link_to "Profile", user_path(current_user) %>
-          </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li>
-            <%= link_to current_user.name, user_path(current_user), class: "navbar-info" %>
-          </li>
-          <li>
-            <%= link_to "Log out", logout_path, method: :delete %>
-          </li>
-        </ul>
+        <%= render 'layouts/logged_in_nav' %>
       <% else %>
-        <ul class="nav navbar-nav">
-          <li>
-            <%= link_to "Log in", login_path %>
-          </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li>
-            <%= link_to "Sign up", signup_path %>
-          </li>
-        </ul>
+        <%= render 'layouts/logged_out_nav' %>
       <% end %>
     </div>
   </div>
@@ -84,9 +57,5 @@
   <footer></footer>
 </div>
 
-<!-- jQuery -->
-<!--<script src="js/jquery.js"></script>-->
-<!-- Bootstrap Core JavaScript -->
-<!--<script src="js/bootstrap.min.js"></script>-->
 </body>
 </html>
