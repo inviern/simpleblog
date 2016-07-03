@@ -1,6 +1,7 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 
+/* General and layout */
 body {
   padding-top: 70px;
 }
@@ -13,37 +14,41 @@ footer {
   color: #fff!important;
 }
 
+/* Buttons */
 .btn-container {
   margin-top: 20px;
   margin-bottom: 5px;
+
+  a, .btn {
+    margin-right: 10px;
+  }
+
+  a {
+    display: inline-block;
+
+    &.btn-secondary {
+      color: #373a3c;
+      background-color: #ffffff;
+      border: 1px solid #adadad;
+
+      &:hover {
+        color: #373a3c;
+        background-color: #e6e6e6;
+      }
+    }
+  }
+
+  .btn {
+    min-width: 100px;
+  }
 }
 
-.btn-container a {
-  display: inline-block;
-  margin-right: 10px;
-}
-
-.btn-container .btn {
-  min-width: 100px;
-  margin-right: 10px;
-}
-
-.btn-container a.btn-secondary {
-  color: #373a3c;
-  background-color: #ffffff;
-  border: 1px solid #adadad;
-}
-
-.btn-container a.btn-secondary:hover {
-  color: #373a3c;
-  background-color: #e6e6e6;
-  border-color: #adadad;
-}
-
-.field-with-errors {
+/* Forms */
+.field_with_errors input {
   border-color: #a94442;
 }
 
+/* Posts */
 .post-datetime {
   color: #777;
 }
