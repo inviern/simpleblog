@@ -16,7 +16,7 @@
       </h2>
       <p class="post-datetime"><span class="glyphicon glyphicon-time"></span> <%= post.created_at.to_datetime.to_s(:long) %></p>
       <p>
-        <%= post.text %>
+        <%= simple_format(post.text) %>
       </p>
       <div class="btn-container">
         <%= link_to "Show", blog_post_path(@author.name, post) %>
