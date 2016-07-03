@@ -11,13 +11,13 @@ class PostsControllerTest < ActionController::TestCase
   end
 
   # index
-  test "all users should see authors blog page" do
+  test "all users should see blog pages" do
     get :index, author: @author.name
     assert_template 'posts/index'
   end
 
   # show
-  test "all users should see detail post page" do
+  test "all users should see detail post pages" do
     get :show, author: @author.name, id: @post.id
     assert_template 'posts/show'
   end
@@ -54,19 +54,19 @@ class PostsControllerTest < ActionController::TestCase
   end
 
   # create
-  test "non-authorized users should not be able to create posts" do
+  test "non-authorized users should not create posts" do
     post :create
     assert_redirected_to root_path
   end
 
   # update
-  test "non-authorized users should not be able to update posts" do
+  test "non-authorized users should not update posts" do
     patch :update, id: @post.id
     assert_redirected_to root_path
   end
 
   # destroy
-  test "non-authorized users should not be able to delete posts" do
+  test "non-authorized users should not delete posts" do
     delete :destroy, id: @post.id
     assert_redirected_to root_path
   end

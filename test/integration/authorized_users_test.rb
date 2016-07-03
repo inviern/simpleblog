@@ -36,52 +36,52 @@ class AuthorizedUsersTest < ActionDispatch::IntegrationTest
 
   # Users
   # Profile page (users#show)
-  test "authorized users should see links to edit their own profile" do
+  test "authorized users should see edit links on their profile page" do
     get user_path(@user)
     assert_select "a[href=?]", edit_user_path
   end
 
-  test "authorized users should see links to delete their own profile" do
+  test "authorized users should see delete links on their profile page" do
     get user_path(@user)
     assert_select "a[href=?][data-method='delete']", user_path
   end
 
-  test "authorized users should not see links to edit other user profiles" do
+  test "authorized users should not see edit links on other user profile page" do
     get user_path(@another_user)
     assert_select "a[href=?]", edit_user_path, count: 0
   end
 
-  test "authorized users should not see links to delete other user profiles" do
+  test "authorized users should not see delete links on other user profile page" do
     get user_path(@another_user)
     assert_select "a[href=?][data-method='delete']", user_path(@another_user), count: 0
   end
 
-  test "authorized users should see link to all users list" do
+  test "authorized users should see link to all users page" do
     get user_path(@user)
     assert_select "a[href=?]", users_path
   end
 
   # Home
   # All posts page (home#index)
-  test "authorized users should see links to edit their own posts on homepage" do
+  test "authorized users should see links to edit their own posts on home page" do
     get root_path
     post = @user.posts.first
     assert_select "a[href=?]", edit_post_path(post)
   end
 
-  test "authorized users should see links to delete their own posts on homepage" do
+  test "authorized users should see links to delete their own posts on home page" do
     get root_path
     post = @user.posts.first
     assert_select "a[href=?][data-method='delete']", post_path(post)
   end
 
-  test "authorized users should not see links to edit other user posts on homepage" do
+  test "authorized users should not see links to edit other user posts on home page" do
     get root_path
     post = @another_user.posts.first
     assert_select "a[href=?]", edit_post_path(post), count: 0
   end
 
-  test "authorized users should not see links to delete other user posts on homepage" do
+  test "authorized users should not see links to delete other user posts on home page" do
     get root_path
     post = @another_user.posts.first
     assert_select "a[href=?][data-method='delete']", post_path(post), count: 0
@@ -89,25 +89,25 @@ class AuthorizedUsersTest < ActionDispatch::IntegrationTest
 
   # Posts
   # User's posts page (posts#index)
-  test "authorized users should see links to edit their own posts" do
+  test "authorized users should see links to edit their own posts on their blog page" do
     get blog_path(@user.name)
     post = @user.posts.first
     assert_select "a[href=?]", edit_post_path(post)
   end
 
-  test "authorized users should see links to delete their own posts" do
+  test "authorized users should see links to delete their own posts on their blog page" do
     get blog_path(@user.name)
     post = @user.posts.first
     assert_select "a[href=?][data-method='delete']", post_path(post)
   end
 
-  test "authorized users should not see links to edit other user posts" do
+  test "authorized users should not see links to edit other user posts on blog pages" do
     get blog_path(@another_user.name)
     post = @another_user.posts.first
     assert_select "a[href=?]", edit_post_path(post), count: 0
   end
 
-  test "authorized users should not see links to delete other user posts" do
+  test "authorized users should not see links to delete other user posts on blog pages" do
     get blog_path(@another_user.name)
     post = @another_user.posts.first
     assert_select "a[href=?][data-method='delete']", post_path(post), count: 0

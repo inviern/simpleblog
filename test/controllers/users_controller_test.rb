@@ -10,19 +10,19 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   # index
-  test "authorized users should see all users list page" do
+  test "authorized users should see all users page" do
     login_user(@user, login_path)
     get :index
     assert_template 'users/index'
   end
 
-  test "non-authorized users should not see all users list page" do
+  test "non-authorized users should not see all users page" do
     get :index
     assert_redirected_to root_path
   end
 
   # show
-  test "all users should see user profile show page" do
+  test "all users should see user profile pages" do
     get :show, id: @user.id
     assert_template 'users/show'
   end
@@ -52,7 +52,7 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   # create
-  test "logged in users should not be able to create account" do
+  test "logged in users should not create account" do
     login_user(@user, login_path)
     post :create
     assert_redirected_to root_path
@@ -64,13 +64,13 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   # update
-  test "non-authorized users should not be able to update user profiles" do
+  test "non-authorized users should not update user profiles" do
     patch :update, id: @user.id
     assert_redirected_to root_path
   end
 
   # destroy
-  test "non-authorized users should not be able to delete user profiles" do
+  test "non-authorized users should not delete user profiles" do
     delete :destroy, id: @user.id
     assert_redirected_to root_path
   end
