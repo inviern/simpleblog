@@ -18,7 +18,7 @@ class UsersControllerTest < ActionController::TestCase
 
   test "non-authorized users should not see all users page" do
     get :index
-    assert_redirected_to root_path
+    assert_redirected_to login_path
   end
 
   # show
@@ -48,7 +48,7 @@ class UsersControllerTest < ActionController::TestCase
 
   test "non-authorized users should not see profile edit pages" do
     get :edit, id: @user.id
-    assert_redirected_to root_path
+    assert_redirected_to login_path
   end
 
   # create
@@ -66,12 +66,12 @@ class UsersControllerTest < ActionController::TestCase
   # update
   test "non-authorized users should not update user profiles" do
     patch :update, id: @user.id
-    assert_redirected_to root_path
+    assert_redirected_to login_path
   end
 
   # destroy
   test "non-authorized users should not delete user profiles" do
     delete :destroy, id: @user.id
-    assert_redirected_to root_path
+    assert_redirected_to login_path
   end
 end

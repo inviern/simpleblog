@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
-  before_filter :for_logged_in, only: [:index, :edit, :update, :destroy]
-  before_filter :for_logged_out, only: [:new, :create]
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+  before_action :logged_out_user, only: [:new, :create]
 
   def index
     @users = User.all.order(:id)
@@ -54,4 +54,5 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
+
 end

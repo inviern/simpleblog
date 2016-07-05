@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
 
-  before_filter :for_logged_in, only: [:new, :edit, :create, :update]
+  before_action :logged_in_user, only: [:new, :edit, :create, :update, :destroy]
+  before_action :author_user, only: [:edit, :update, :destroy]
 
   def index
     @author = User.find_by(name: params[:author])
@@ -17,10 +18,6 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
-    unless current_user == @post.author
-      redirect_to root_path
-    end
   end
 
   def create
@@ -35,36 +32,33 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post = Post.find(params[:id])
-    if current_user == @post.author
-      if @post.update(post_params)
-        flash[:success] = "Post updated"
-        redirect_to blog_path(current_user.name)
-      else
-        render 'edit'
-      end
+    if @post.update(post_params)
+      flash[:success] = "Post updated"
+      redirect_to blog_path(current_user.name)
     else
-      redirect_to root_path
+      render 'edit'
     end
   end
 
   def destroy
-    @post = Post.find(params[:id])
-    if current_user == @post.author
       if @post.destroy
         flash[:success] = "Post deleted"
         redirect_to blog_path(current_user.name)
       else
         render 'show'
       end
-    else
-      redirect_to root_path
-    end
   end
 
   private
+
   def post_params
     params.require(:post).permit(:title, :text)
   end
+
+  def author_user
+    @post = Post.find(params[:id])
+    redirect_to root_path unless current_user == @post.author
+  end
+
 
 end

@@ -30,7 +30,7 @@ class SessionsControllerTest < ActionController::TestCase
   # destroy
   test "should logout successfully" do
     delete :destroy
-    assert_redirected_to root_path
+    assert_redirected_to login_path
   end
 
 end

@@ -31,7 +31,7 @@ class PostsControllerTest < ActionController::TestCase
 
   test "non-authorized users should not see new post page" do
     get :new
-    assert_redirected_to root_path
+    assert_redirected_to login_path
   end
 
   # edit
@@ -42,32 +42,33 @@ class PostsControllerTest < ActionController::TestCase
   end
 
   test "authorized users should not see other user posts edit pages" do
+    login_user(@author, login_path)
     another_author = users(:second)
     post = another_author.posts.first
-    get :edit, id: @post.id
+    get :edit, id: post.id
     assert_redirected_to root_path
   end
 
   test "non-authorized users should not see edit post pages" do
     get :edit, id: @post.id
-    assert_redirected_to root_path
+    assert_redirected_to login_path
   end
 
   # create
   test "non-authorized users should not create posts" do
     post :create
-    assert_redirected_to root_path
+    assert_redirected_to login_path
   end
 
   # update
   test "non-authorized users should not update posts" do
     patch :update, id: @post.id
-    assert_redirected_to root_path
+    assert_redirected_to login_path
   end
 
   # destroy
   test "non-authorized users should not delete posts" do
     delete :destroy, id: @post.id
-    assert_redirected_to root_path
+    assert_redirected_to login_path
   end
 end
