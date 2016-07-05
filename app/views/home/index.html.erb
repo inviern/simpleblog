@@ -31,5 +31,8 @@
       </div>
       <hr>
     <% end %>
+
+    <%= render partial: 'shared/posts_pagination', locals: {posts: @posts} %>
+
   </div>
 </div>

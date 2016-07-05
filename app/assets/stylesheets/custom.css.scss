@@ -56,3 +56,12 @@ a:hover {
 .post-datetime {
   color: #777;
 }
+
+/* Pagination */
+.pager .disabled > a,
+.pager .disabled > a:hover,
+.pager .disabled > a:focus,
+.pager .disabled > span
+{
+  cursor: default;
+}

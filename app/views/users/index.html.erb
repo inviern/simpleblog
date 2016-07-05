@@ -15,7 +15,10 @@
         </div>
       </div>
       <hr>
-     <% end %>
+    <% end %>
+
+    <%= will_paginate @users, renderer: ApplicationHelper::MyLinkRenderer %>
+
     <div class="btn-container">
       <%= link_to '<small><span class="glyphicon glyphicon-menu-left"></span>' \
         '</small> Home'.html_safe, root_path %>

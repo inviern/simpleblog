@@ -1,5 +1,8 @@
 class HomeController < ApplicationController
+  ITEMS_PER_PAGE = 3
+
   def index
-    @posts = Post.all.order(created_at: :desc)
+    @posts = Post.order(created_at: :desc)
+                 .paginate(page: params[:page], per_page: ITEMS_PER_PAGE)
   end
 end

@@ -1,10 +1,13 @@
 class PostsController < ApplicationController
+  ITEMS_PER_PAGE = 5
+
   before_action :logged_in_user, only: [:new, :edit, :create, :update, :destroy]
   before_action :author_user, only: [:edit, :update, :destroy]
 
   def index
     @author = User.find_by(name: params[:author])
     @posts = Post.where(author: @author).order(created_at: :desc)
+                 .paginate(page: params[:page], per_page: ITEMS_PER_PAGE)
   end
 
   def show

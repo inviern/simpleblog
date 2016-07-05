@@ -11,6 +11,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'sorcery'
 gem 'bootstrap-sass', '3.3.6'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 
 group :development, :test do
   gem 'sqlite3'

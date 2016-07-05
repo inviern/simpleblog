@@ -34,6 +34,9 @@
       </div>
       <hr>
     <% end %>
+
+    <%= render partial: 'shared/posts_pagination', locals: {posts: @posts} %>
+
     <div class="btn-container">
       <%= link_to '<small><span class="glyphicon glyphicon-menu-left">' \
         '</span></small> Home'.html_safe, root_path %>

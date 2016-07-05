@@ -20,7 +20,8 @@
               class: 'btn btn-primary' %>
             <small>
               <%= link_to 'Delete account'.html_safe, user_path,
-                method: :delete, data: { confirm: "Delete account?" } %>
+                          method: :delete,
+                          data: { confirm: "Delete account?" } %>
             </small>
           </div>
         <% end %>
@@ -29,8 +30,7 @@
         </div>
         <% if logged_in? %>
           <div class="btn-container">
-            <%= link_to '<small><span class="glyphicon' \
-             'glyphicon-menu-left"></span></small> All users'.html_safe,
+            <%= link_to '<small><span class="glyphicon glyphicon-menu-left"></span></small> All users'.html_safe,
               users_path %>
           </div>
         <% end %>
