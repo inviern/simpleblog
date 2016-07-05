@@ -2,27 +2,31 @@
 
 <div class="row">
   <div class="col-md-8">
-    <h1 class="page-header">
-      Simpleblog
-      <small>Recent posts</small>
-    </h1>
+    <h1 class="page-header">Simpleblog <small>Recent posts</small></h1>
     <% @posts.each do |post| %>
       <h2>
-        <%= link_to post.title, blog_post_path(author: post.author.name, id: post) %>
+        <%= link_to post.title, blog_post_path(author: post.author.name,
+          id: post) %>
       </h2>
       <p class="lead">
         by <%= link_to post.author.name, blog_path(post.author.name) %>
       </p>
-      <p class="post-datetime"><span class="glyphicon glyphicon-time"></span> <%= post.created_at.to_datetime.to_s(:long) %></p>
+      <p class="post-datetime">
+        <span class="glyphicon glyphicon-time"></span>
+        <%= post.created_at.to_datetime.to_s(:long) %>
+      </p>
       <p>
         <%= simple_format(post.text) %>
       </p>
       <div class="btn-container">
-        <%= link_to "Read", blog_post_path(author: post.author.name, id: post) %>
+        <%= link_to "Read", blog_post_path(author: post.author.name,
+          id: post) %>
         <% if current_user == post.author %>
-            <%= link_to ('<small><span class="glyphicon glyphicon-pencil"></span></small> Edit').html_safe, edit_post_path(post) %>
-            <%= link_to ('<small><span class="glyphicon glyphicon-remove"></span></small>').html_safe,
-                  post_path(post), method: :delete, class: 'pull-right', data: { confirm: "Delete post?" } %>
+            <%= link_to '<small><span class="glyphicon glyphicon-pencil">' \
+              '</span></small> Edit'.html_safe, edit_post_path(post) %>
+            <%= link_to '<small><span class="glyphicon glyphicon-remove">' \
+              '</span></small>'.html_safe, post_path(post), method: :delete,
+              class: 'pull-right', data: { confirm: "Delete post?" } %>
         <% end %>
       </div>
       <hr>

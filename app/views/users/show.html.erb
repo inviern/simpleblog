@@ -9,21 +9,30 @@
         <% if current_user == @user %>
           <p><b><%= @user.email %></b></p>
         <% end %>
-        <p><small>registered at <%= @user.created_at.to_datetime.to_s(:long) %></small></p>
+        <p>
+          <small>
+            registered at <%= @user.created_at.to_datetime.to_s(:long) %>
+          </small>
+        </p>
         <% if current_user == @user %>
           <div class="btn-container">
-            <%= link_to "Edit profile", edit_user_path, class: 'btn btn-primary' %>
-            <%= link_to ('<small>Delete account</small>').html_safe,
-              user_path, method: :delete, data: { confirm: "Delete account?" } %>
+            <%= link_to 'Edit profile', edit_user_path,
+              class: 'btn btn-primary' %>
+            <small>
+              <%= link_to 'Delete account'.html_safe, user_path,
+                method: :delete, data: { confirm: "Delete account?" } %>
+            </small>
           </div>
         <% end %>
         <div class="btn-container">
-          <%= link_to "Blog", blog_path(@user.name) %>
+          <%= link_to 'Blog', blog_path(@user.name) %>
         </div>
         <% if logged_in? %>
-            <div class="btn-container">
-              <%= link_to ('<small><span class="glyphicon glyphicon-menu-left"></span></small> All users').html_safe, users_path %>
-            </div>
+          <div class="btn-container">
+            <%= link_to '<small><span class="glyphicon' \
+             'glyphicon-menu-left"></span></small> All users'.html_safe,
+              users_path %>
+          </div>
         <% end %>
       </div>
     </div>

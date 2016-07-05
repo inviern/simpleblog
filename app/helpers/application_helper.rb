@@ -1,6 +1,5 @@
 module ApplicationHelper
-
   def default_title
-    "Simpleblog"
+    'Simpleblog'
   end
 end

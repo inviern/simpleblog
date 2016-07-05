@@ -4,11 +4,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   private
-    def logged_in_user
-      redirect_to login_path unless logged_in?
-    end
 
-    def logged_out_user
-      redirect_to root_path if logged_in?
-    end
+  def logged_in_user
+    redirect_to login_path unless logged_in?
+  end
+
+  def logged_out_user
+    redirect_to root_path if logged_in?
+  end
 end

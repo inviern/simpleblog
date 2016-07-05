@@ -7,29 +7,36 @@
       <small>Recent posts</small>
     </h1>
     <div class="btn-container">
-      <%= link_to '<small><span class="glyphicon glyphicon-user"></span></small> Profile'.html_safe, user_path(@author) %>
+      <%= link_to '<small><span class="glyphicon glyphicon-user"></span>' \
+        '</small> Profile'.html_safe, user_path(@author) %>
     </div>
     <hr>
     <% @posts.each do |post| %>
       <h2>
         <%= link_to post.title, blog_post_path(@author.name, post) %>
       </h2>
-      <p class="post-datetime"><span class="glyphicon glyphicon-time"></span> <%= post.created_at.to_datetime.to_s(:long) %></p>
+      <p class="post-datetime">
+        <span class="glyphicon glyphicon-time"></span>
+        <%= post.created_at.to_datetime.to_s(:long) %>
+      </p>
       <p>
         <%= simple_format(post.text) %>
       </p>
       <div class="btn-container">
-        <%= link_to "Show", blog_post_path(@author.name, post) %>
+        <%= link_to 'Show', blog_post_path(@author.name, post) %>
         <% if current_user == post.author %>
-          <%= link_to ('<small><span class="glyphicon glyphicon-pencil"></span></small> Edit').html_safe, edit_post_path(post) %>
-          <%= link_to ('<small><span class="glyphicon glyphicon-remove"></span></small>').html_safe,
-                post_path(post), method: :delete, class: 'pull-right', data: { confirm: "Delete post?" } %>
+          <%= link_to '<small><span class="glyphicon glyphicon-pencil">' \
+            '</span></small> Edit'.html_safe, edit_post_path(post) %>
+          <%= link_to '<small><span class="glyphicon glyphicon-remove">' \
+            '</span></small>'.html_safe, post_path(post), method: :delete,
+            class: 'pull-right', data: { confirm: "Delete post?" } %>
         <% end %>
       </div>
       <hr>
     <% end %>
     <div class="btn-container">
-      <%= link_to ('<small><span class="glyphicon glyphicon-menu-left"></span></small> Home').html_safe, root_path %>
+      <%= link_to '<small><span class="glyphicon glyphicon-menu-left">' \
+        '</span></small> Home'.html_safe, root_path %>
     </div>
   </div>
 </div>

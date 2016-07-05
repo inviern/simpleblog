@@ -6,7 +6,10 @@
     <p class="lead">
       by <%= link_to @post.author.name, blog_path(@post.author.name) %>
     </p>
-    <p class="post-datetime"><span class="glyphicon glyphicon-time"></span> <%= @post.created_at.to_datetime.to_s(:long) %></p>
+    <p class="post-datetime">
+      <span class="glyphicon glyphicon-time"></span>
+      <%= @post.created_at.to_datetime.to_s(:long) %>
+    </p>
     <p>
       <%= simple_format(@post.text) %>
     </p>
@@ -14,11 +17,12 @@
 </div>
 <% if current_user == @post.author %>
   <div class="btn-container">
-    <%= link_to "Edit", edit_post_path(@post), class: 'btn btn-primary' %>
-    <%= link_to ('<small>Delete post</small>').html_safe,
-          post_path(@post), method: :delete, data: { confirm: "Delete post?" } %><br>
+    <%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-primary' %>
+    <%= link_to '<small>Delete post</small>'.html_safe,
+      post_path(@post), method: :delete, data: { confirm: "Delete post?" } %>
 </div>
 <% end %>
 <div class="btn-container">
-  <%= link_to ('<small><span class="glyphicon glyphicon-menu-left"></span></small> All posts').html_safe, blog_path(@post.author.name) %><br>
+  <%= link_to '<small><span class="glyphicon glyphicon-menu-left"></span>' \
+    '</small> All posts'.html_safe, blog_path(@post.author.name) %>
 </div>

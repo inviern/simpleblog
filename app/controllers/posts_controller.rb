@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-
   before_action :logged_in_user, only: [:new, :edit, :create, :update, :destroy]
   before_action :author_user, only: [:edit, :update, :destroy]
 
@@ -24,7 +23,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.author = current_user
     if @post.save
-      flash[:success] = "Post created"
+      flash[:success] = 'Post created'
       redirect_to blog_path(current_user.name)
     else
       render 'new'
@@ -33,7 +32,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      flash[:success] = "Post updated"
+      flash[:success] = 'Post updated'
       redirect_to blog_path(current_user.name)
     else
       render 'edit'
@@ -41,12 +40,12 @@ class PostsController < ApplicationController
   end
 
   def destroy
-      if @post.destroy
-        flash[:success] = "Post deleted"
-        redirect_to blog_path(current_user.name)
-      else
-        render 'show'
-      end
+    if @post.destroy
+      flash[:success] = 'Post deleted'
+      redirect_to blog_path(current_user.name)
+    else
+      render 'show'
+    end
   end
 
   private
@@ -59,6 +58,4 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     redirect_to root_path unless current_user == @post.author
   end
-
-
 end

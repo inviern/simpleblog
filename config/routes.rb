@@ -1,16 +1,15 @@
 Rails.application.routes.draw do
-
   root 'home#index'
 
-  get       'signup',           to: 'users#new'
-  get       'profile/edit',     to: 'users#edit',     as: :edit_user
+  get       'signup'            => 'users#new'
+  get       'profile/edit'      => 'users#edit', as: :edit_user
   resources :users, only: [:index, :show, :create, :update, :destroy]
 
-  get       'blog/:author',     to: 'posts#index',    as: :blog
-  get       'blog/:author/:id', to: 'posts#show',     as: :blog_post
+  get       'blog/:author'      => 'posts#index', as: :blog
+  get       'blog/:author/:id'  => 'posts#show', as: :blog_post
   resources :posts, only: [:new, :edit, :create, :update, :destroy]
 
-  get       'login',            to: 'sessions#new'
-  post      'login',            to: 'sessions#create'
-  delete    'logout',           to: 'sessions#destroy'
+  get       'login'             => 'sessions#new'
+  post      'login'             => 'sessions#create'
+  delete    'logout'            => 'sessions#destroy'
 end

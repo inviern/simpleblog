@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
   before_action :logged_out_user, only: [:new, :create]
+  before_action :set_user_to_current, only: [:edit, :update, :destroy]
 
   def index
     @users = User.all.order(:id)
@@ -16,7 +16,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = current_user
   end
 
   def create
@@ -31,9 +30,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = current_user
     if @user.update(user_params)
-      flash[:success] = "Account updated"
+      flash[:success] = 'Account updated'
       redirect_to @user
     else
       render 'edit'
@@ -41,9 +39,8 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = current_user
     if @user.destroy
-      flash[:success] = "Account deleted"
+      flash[:success] = 'Account deleted'
       redirect_to users_path
     else
       render 'show'
@@ -51,8 +48,13 @@ class UsersController < ApplicationController
   end
 
   private
-    def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
-    end
 
+  def user_params
+    params.require(:user)
+      .permit(:name, :email, :password, :password_confirmation)
+  end
+
+  def set_user_to_current
+    @user = current_user
+  end
 end

@@ -6,14 +6,19 @@
     <% @users.each do |user| %>
       <div class="media">
         <div class="media-body">
-          <h4 class="media-heading"><%= link_to user.name, user_path(user) %></h4>
-          <small>registered at <%= user.created_at.to_datetime.to_s(:long) %></small>
+          <h4 class="media-heading">
+            <%= link_to user.name, user_path(user) %>
+          </h4>
+          <small>
+            registered at <%= user.created_at.to_datetime.to_s(:long) %>
+          </small>
         </div>
       </div>
       <hr>
      <% end %>
     <div class="btn-container">
-      <%= link_to '<small><span class="glyphicon glyphicon-menu-left"></span></small> Home'.html_safe, root_path %>
+      <%= link_to '<small><span class="glyphicon glyphicon-menu-left"></span>' \
+        '</small> Home'.html_safe, root_path %>
     </div>
   </div>
 </div>

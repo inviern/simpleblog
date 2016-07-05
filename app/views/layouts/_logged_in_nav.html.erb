@@ -1,19 +1,12 @@
 <ul class="nav navbar-nav">
-  <li>
-    <%= link_to "Blog", blog_path(current_user.name) %>
-  </li>
-  <li>
-    <%= link_to "New post", new_post_path %>
-  </li>
-  <li>
-    <%= link_to "Profile", user_path(current_user) %>
-  </li>
+  <li><%= link_to 'Blog', blog_path(current_user.name) %></li>
+  <li><%= link_to 'New post', new_post_path %></li>
+  <li><%= link_to 'Profile', user_path(current_user) %></li>
 </ul>
 <ul class="nav navbar-nav navbar-right">
   <li>
-    <%= link_to current_user.name, user_path(current_user), class: "navbar-info" %>
+    <%= link_to current_user.name, user_path(current_user),
+      class: 'navbar-info' %>
   </li>
-  <li>
-    <%= link_to "Log out", logout_path, method: :delete %>
-  </li>
+  <li><%= link_to 'Log out', logout_path, method: :delete %></li>
 </ul>
