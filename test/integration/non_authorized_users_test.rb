@@ -87,4 +87,12 @@ class NonAuthorizedUsersTest < ActionDispatch::IntegrationTest
     get blog_post_path(@user.name, post)
     assert_select 'a[href=?][data-method="delete"]', post_path(post), count: 0
   end
+
+  # Comments
+  test 'non-authorized users should not see add comment form on detail post page' do
+    post = posts(:first)
+    get blog_post_path(post.author.name, post)
+    assert_select 'form[action=?][method="post"]', post_comments_path(post),
+                  count: 0
+  end
 end
