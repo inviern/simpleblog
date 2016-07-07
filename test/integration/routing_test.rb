@@ -78,12 +78,23 @@ class RoutingTest < ActionDispatch::IntegrationTest
   end
 
   test 'sessions#create' do
-    assert_routing({ path: 'login', method: 'post' },
+    assert_routing({ path: 'login', method: :post },
                    controller: 'sessions', action: 'create')
   end
 
   test 'sessions#destroy' do
-    assert_routing({ path: 'logout', method: 'delete' },
+    assert_routing({ path: 'logout', method: :delete },
                    controller: 'sessions', action: 'destroy')
+  end
+
+  # comments
+  test 'comments#create' do
+    assert_routing({ path: 'posts/1/comments', method: :post },
+                   controller: 'comments', action: 'create', post_id: '1')
+  end
+
+  test 'comments#destroy' do
+    assert_routing({ path: 'comments/1', method: :delete },
+                   controller: 'comments', action: 'destroy', id: '1')
   end
 end
