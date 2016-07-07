@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   EMAIL_REGEXP  = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   authenticates_with_sorcery!
 
