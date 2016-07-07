@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  ITEMS_PER_PAGE = 3
+  ITEMS_PER_PAGE = 10
 
   def index
     @posts = Post.order(created_at: :desc)

@@ -16,10 +16,12 @@
         </p>
         <% if current_user == @user %>
           <div class="btn-container">
-            <%= link_to 'Edit profile', edit_user_path,
-              class: 'btn btn-primary' %>
+            <%= link_to 'Edit profile',
+                        edit_user_path,
+                        class: 'btn btn-primary' %>
             <small>
-              <%= link_to 'Delete account'.html_safe, user_path,
+              <%= link_to 'Delete account',
+                          user_path,
                           method: :delete,
                           data: { confirm: "Delete account?" } %>
             </small>
@@ -30,8 +32,9 @@
         </div>
         <% if logged_in? %>
           <div class="btn-container">
-            <%= link_to '<small><span class="glyphicon glyphicon-menu-left"></span></small> All users'.html_safe,
-              users_path %>
+            <%= link_to '<span class="glyphicon glyphicon-menu-left small"></span>' \
+                          ' All users'.html_safe,
+                        users_path %>
           </div>
         <% end %>
       </div>

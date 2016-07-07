@@ -18,11 +18,16 @@
 <% if current_user == @post.author %>
   <div class="btn-container">
     <%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-primary' %>
-    <%= link_to '<small>Delete post</small>'.html_safe,
-      post_path(@post), method: :delete, data: { confirm: "Delete post?" } %>
+    <small>
+      <%= link_to 'Delete post',
+                  post_path(@post),
+                  method: :delete,
+                  data: { confirm: "Delete post?" } %>
+    </small>
 </div>
 <% end %>
 <div class="btn-container">
-  <%= link_to '<small><span class="glyphicon glyphicon-menu-left"></span>' \
-    '</small> All posts'.html_safe, blog_path(@post.author.name) %>
+  <%= link_to '<span class="glyphicon glyphicon-menu-left small"></span>' \
+                ' All posts'.html_safe,
+              blog_path(@post.author.name) %>
 </div>

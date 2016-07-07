@@ -2,12 +2,10 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   def setup
-    @user = User.new(
-      name: 'test_user',
-      email: 'test@example.com',
-      password: 'password',
-      password_confirmation: 'password'
-    )
+    @user = User.new(name: 'test_user',
+                     email: 'test@example.com',
+                     password: 'password',
+                     password_confirmation: 'password')
   end
 
   test 'should be valid' do
@@ -53,7 +51,7 @@ class UserTest < ActiveSupport::TestCase
   # email
   test 'valid emails should be accepted' do
     valid_emails = %w(user@example.com USER@examle.COM U_S-ER@exam.ple.com
-      test.user@example.com test+user@example.com)
+                      test.user@example.com test+user@example.com)
     valid_emails.each do |valid_email|
       @user.email = valid_email
       assert @user.valid?, "#{valid_email} should be valid"
@@ -72,7 +70,7 @@ class UserTest < ActiveSupport::TestCase
 
   test 'invalid emails should be rejected' do
     invalid_emails = %w(user@example,com user_at_example.com user@example.
-      user@exam_ple.com user@exam+ple.com)
+                        user@exam_ple.com user@exam+ple.com)
     invalid_emails << 'us er@example.com'
     invalid_emails.each do |invalid_email|
       @user.email = invalid_email

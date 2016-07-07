@@ -53,7 +53,7 @@ class AuthorizedUsersTest < ActionDispatch::IntegrationTest
   test 'authorized users should not see delete links on other user profile' do
     get user_path(@another_user)
     assert_select 'a[href=?][data-method="delete"]', user_path(@another_user),
-      count: 0
+                  count: 0
   end
 
   test 'authorized users should see link to all users page' do
@@ -76,14 +76,14 @@ class AuthorizedUsersTest < ActionDispatch::IntegrationTest
   end
 
   test 'authorized users should not see links to edit other user posts' \
-    ' on home' do
+       ' on home' do
     get root_path
     post = @another_user.posts.first
     assert_select 'a[href=?]', edit_post_path(post), count: 0
   end
 
   test 'authorized users should not see links to delete other user posts' \
-    ' on home' do
+       ' on home' do
     get root_path
     post = @another_user.posts.first
     assert_select 'a[href=?][data-method="delete"]', post_path(post), count: 0
@@ -104,14 +104,14 @@ class AuthorizedUsersTest < ActionDispatch::IntegrationTest
   end
 
   test 'authorized users should not see links to edit other user posts' \
-    ' on blog pages' do
+       ' on blog pages' do
     get blog_path(@another_user.name)
     post = @another_user.posts.first
     assert_select 'a[href=?]', edit_post_path(post), count: 0
   end
 
   test 'authorized users should not see links to delete other user posts' \
-    ' on blog pages' do
+       ' on blog pages' do
     get blog_path(@another_user.name)
     post = @another_user.posts.first
     assert_select 'a[href=?][data-method="delete"]', post_path(post), count: 0
@@ -130,15 +130,15 @@ class AuthorizedUsersTest < ActionDispatch::IntegrationTest
     assert_select 'a[href=?][data-method="delete"]', post_path(post)
   end
 
-  test 'authorized users should not see edit links on other users' \
-    ' post detail pages' do
+  test 'authorized users should not see edit links on other users post' \
+       ' detail pages' do
     post = @another_user.posts.first
     get blog_post_path(@another_user.name, post)
     assert_select 'a[href=?]', edit_post_path(post), count: 0
   end
 
-  test 'authorized users should not see delete links on other users' \
-    ' post detail pages' do
+  test 'authorized users should not see delete links on other users post' \
+       ' detail pages' do
     post = @another_user.posts.first
     get blog_post_path(@another_user.name, post)
     assert_select 'a[href=?][data-method="delete"]', post_path(post), count: 0

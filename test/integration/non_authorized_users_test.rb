@@ -60,14 +60,14 @@ class NonAuthorizedUsersTest < ActionDispatch::IntegrationTest
   # Posts
   # User's posts page (posts#index)
   test 'non-authorized users should not see links to edit posts' \
-    ' on blog pages' do
+       ' on blog pages' do
     get root_path
     post = @user.posts.first
     assert_select 'a[href=?]', edit_post_path(post), count: 0
   end
 
   test 'non-authorized users should not see links to delete posts' \
-    ' on blog pages' do
+       ' on blog pages' do
     get root_path
     post = @user.posts.first
     assert_select 'a[href=?][data-method="delete"]', post_path(post), count: 0
@@ -75,14 +75,14 @@ class NonAuthorizedUsersTest < ActionDispatch::IntegrationTest
 
   # Post detail page (posts#show)
   test 'non-authorized users should not see links to edit on post' \
-    ' detail pages' do
+       ' detail pages' do
     post = @user.posts.first
     get blog_post_path(@user.name, post)
     assert_select 'a[href=?]', edit_post_path(post), count: 0
   end
 
   test 'non-authorized users should not see links to delete on post' \
-    ' detail pages' do
+       ' detail pages' do
     post = @user.posts.first
     get blog_post_path(@user.name, post)
     assert_select 'a[href=?][data-method="delete"]', post_path(post), count: 0

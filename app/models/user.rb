@@ -9,21 +9,21 @@ class User < ActiveRecord::Base
   before_save { self.email = email.downcase }
 
   validates :name,
-    presence: true,
-    length: { maximum: 32 },
-    format: { with: NAME_REGEXP },
-    uniqueness: { case_sensitive: false }
+            presence: true,
+            length: { maximum: 32 },
+            format: { with: NAME_REGEXP },
+            uniqueness: { case_sensitive: false }
 
   validates :email,
-    presence: true,
-    length: { maximum: 32 },
-    format: { with: EMAIL_REGEXP },
-    uniqueness: { case_sensitive: false }
+            presence: true,
+            length: { maximum: 32 },
+            format: { with: EMAIL_REGEXP },
+            uniqueness: { case_sensitive: false }
 
   validates :password,
-    presence: true,
-    length: { minimum: 6, maximum: 32 },
-    confirmation: true
+            presence: true,
+            length: { minimum: 6, maximum: 32 },
+            confirmation: true
 
   validates :password_confirmation, presence: true
 end
