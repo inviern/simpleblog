@@ -36,7 +36,7 @@
     <% end %>
     <hr>
     <% if @post.comments.any? %>
-      <% @post.comments.order(created_at: :desc).each do |comment| %>
+      <% @post.comments.order(created_at: :asc).each do |comment| %>
         <div class="media">
           <div class="media-body">
             <h4 class="media-heading">
