@@ -1,8 +1,12 @@
-<%= form_for :comment, url: blog_post_path(@post.author.name, @post) do |f| %>
+<div class="well">
+  <%= form_for :comment, url: blog_post_path(@post.author.name, @post) do |f| %>
     <%= render partial: 'shared/error_messages', locals: { object: @comment } %>
-
-    <%= f.label :text %><br>
-    <%= f.text_area :text %><br>
-    <br>
-    <%= f.submit %>
-<% end %>
+    <h4>Leave a Comment:</h4>
+    <div class="form-group">
+      <%= f.text_area :text, class: 'form-control', rows: 3 %>
+    </div>
+    <div class="form-group btn-container">
+      <%= f.submit 'Submit', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>

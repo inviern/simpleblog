@@ -13,43 +13,52 @@
     <p>
       <%= simple_format(@post.text) %>
     </p>
-  </div>
-</div>
 
-<% if current_user == @post.author %>
-  <div class="btn-container">
-    <%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-primary' %>
-    <small>
-      <%= link_to 'Delete post',
-                  post_path(@post),
-                  method: :delete,
-                  data: { confirm: "Delete post?" } %>
-    </small>
-</div>
-<% end %>
-
-<% if @post.comments.any? %>
-  <h3>Comments (<%= @post.comments.size %>)</h3>
-  <% @post.comments.each do |comment| %>
-    <%= comment.created_at.to_datetime.to_s(:long) %>
-    by <%= comment.author.name %><br>
-    <%= comment.text %><br>
-    <% if current_user == comment.author %>
-        <%= link_to "Delete", comment_path(comment), method: :delete %><br>
+    <% if current_user == @post.author %>
+      <div class="btn-container">
+        <%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-primary' %>
+        <small>
+          <%= link_to 'Delete post',
+                      post_path(@post),
+                      method: :delete,
+                      data: { confirm: "Delete post?" } %>
+        </small>
+      </div>
     <% end %>
-    <br>
-  <% end %>
-<% end %>
 
-<% if logged_in? %>
-  <h3>Add a comment</h3>
-  <%= render 'comments/form' %>
-<% else  %>
-  <%= link_to "Log in to add a comment", login_path %>
-<% end %>
+    <!-- Comments -->
+    <% if logged_in? %>
+        <hr>
+        <%= render 'comments/form' %>
+    <% else  %>
+        <br>
+        <%= link_to "Log in to leave a comment", login_path %>
+    <% end %>
+    <hr>
+    <% if @post.comments.any? %>
+      <% @post.comments.order(created_at: :desc).each do |comment| %>
+        <div class="media">
+          <div class="media-body">
+            <h4 class="media-heading">
+              <%= link_to comment.author.name, user_path(comment.author) %>
+              <small><%= comment.created_at.to_datetime.to_s(:long) %></small>
+            </h4>
+            <%= comment.text %>
+            <% if current_user == comment.author %>
+            <small>
+              <%= link_to "Delete", comment_path(comment), method: :delete %>
+            </small>
+            <% end %>
+          </div>
+        </div>
+        <hr>
+      <% end %>
+    <% end %>
 
-<div class="btn-container">
-  <%= link_to '<span class="glyphicon glyphicon-menu-left small"></span>' \
+    <div class="btn-container">
+      <%= link_to '<span class="glyphicon glyphicon-menu-left small"></span>' \
                 ' All posts'.html_safe,
-              blog_path(@post.author.name) %>
+                  blog_path(@post.author.name) %>
+    </div>
+  </div>
 </div>
