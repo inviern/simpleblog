@@ -89,10 +89,12 @@ class NonAuthorizedUsersTest < ActionDispatch::IntegrationTest
   end
 
   # Comments
-  test 'non-authorized users should not see add comment form on detail post page' do
+  test 'non-authorized users should not see add comment form on detail' \
+       ' post page' do
     post = posts(:first)
     get blog_post_path(post.author.name, post)
-    assert_select 'form[action=?][method="post"]', post_comments_path(post),
+    assert_select 'form[action=?][method="post"]',
+                  blog_post_path(post.author.name, post),
                   count: 0
   end
 end

@@ -1,4 +1,4 @@
-<%= form_for [@comment.post, @comment] do |f| %>
+<%= form_for :comment, url: blog_post_path(@post.author.name, @post) do |f| %>
     <%= render partial: 'shared/error_messages', locals: { object: @comment } %>
 
     <%= f.label :text %><br>

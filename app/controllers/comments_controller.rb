@@ -10,8 +10,8 @@ class CommentsController < ApplicationController
       flash[:success] = 'Comment added'
       redirect_to blog_post_path(@comment.post.author.name, @comment.post)
     else
-      flash[:danger] = 'Error adding comment'
-      redirect_to blog_post_path(@comment.post.author.name, @comment.post)
+      @post = @comment.post
+      render 'posts/show'
     end
   end
 
@@ -20,8 +20,8 @@ class CommentsController < ApplicationController
       flash[:success] = 'Comment deleted'
       redirect_to blog_post_path(@comment.post.author.name, @comment.post)
     else
-      flash[:danger] = 'Error deleting comment'
-      redirect_to blog_post_path(@comment.post.author.name, @comment.post)
+      @post = @comment.post
+      render 'posts/show'
     end
   end
 

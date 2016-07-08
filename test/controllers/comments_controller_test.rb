@@ -15,12 +15,13 @@ class CommentsControllerTest < ActionController::TestCase
   test 'authorized users should create comments' do
     login_user(@user, login_path)
     assert_difference 'Comment.count', 1 do
-      post :create, post_id: @post, comment: { text: 'text' }
+      post :create, author: @post.author.name, post_id: @post,
+           comment: { text: 'text' }
     end
   end
 
   test 'non-authorized users should not create comments' do
-    post :create, post_id: @post
+    post :create, author: @post.author.name, post_id: @post
     assert_redirected_to login_path
   end
 

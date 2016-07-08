@@ -89,8 +89,9 @@ class RoutingTest < ActionDispatch::IntegrationTest
 
   # comments
   test 'comments#create' do
-    assert_routing({ path: 'posts/1/comments', method: :post },
-                   controller: 'comments', action: 'create', post_id: '1')
+    assert_routing({ path: 'blog/test/1', method: :post },
+                   controller: 'comments', action: 'create', author: 'test',
+                   post_id: '1')
   end
 
   test 'comments#destroy' do
