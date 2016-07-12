@@ -23,12 +23,13 @@ class SessionsControllerTest < ActionController::TestCase
   # create
   test 'should login successfully' do
     post :create, session: { email: @user.email, password: 'password' }
-    assert_response :redirect
+    assert_not_nil assigns(:current_user)
   end
 
   # destroy
   test 'should logout successfully' do
+    login_user(@user, login_path)
     delete :destroy
-    assert_redirected_to login_path
+    assert_nil assigns(:current_user)
   end
 end
