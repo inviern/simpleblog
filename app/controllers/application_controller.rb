@@ -5,11 +5,11 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def logged_in_user
-    redirect_to login_path unless logged_in?
-  end
-
   def logged_out_user
     redirect_to root_path if logged_in?
+  end
+
+  def not_authenticated
+    redirect_to login_path
   end
 end

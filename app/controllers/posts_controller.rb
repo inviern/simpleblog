@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   ITEMS_PER_PAGE = 10
 
-  before_action :logged_in_user, only: [:new, :edit, :create, :update, :destroy]
+  before_action :require_login, only: [:new, :edit, :create, :update, :destroy]
   before_action :author_user, only: [:edit, :update, :destroy]
 
   def index

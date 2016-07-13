@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   authenticates_with_sorcery!
 
-  before_save { self.email = email.downcase }
+  before_save :downcase_email
 
   validates :name,
             presence: true,
@@ -27,4 +27,11 @@ class User < ActiveRecord::Base
             confirmation: true
 
   validates :password_confirmation, presence: true
+
+  private
+
+  def downcase_email
+    self.email = email.downcase
+  end
+
 end

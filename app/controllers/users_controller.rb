@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   ITEMS_PER_PAGE = 15
 
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+  before_action :require_login, only: [:index, :edit, :update, :destroy]
   before_action :logged_out_user, only: [:new, :create]
   before_action :set_user_to_current, only: [:edit, :update, :destroy]
 
