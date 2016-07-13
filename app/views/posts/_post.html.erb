@@ -6,7 +6,7 @@
   <%= post.created_at.to_datetime.to_s(:long) %>
 </p>
 <p>
-  <%= simple_format(post.text) %>
+  <%= formatted_post_text(post) %>
 </p>
 <div class="btn-container">
   <%= link_to 'View', blog_post_path(post.author.name, post) %>

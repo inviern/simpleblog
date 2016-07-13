@@ -10,10 +10,9 @@
   <%= post.created_at.to_datetime.to_s(:long) %>
 </p>
 <p>
-  <%= simple_format(post.text) %>
+  <%= formatted_post_text(post, truncate: true) %>
 </p>
 <div class="btn-container">
-  <%= link_to "View", blog_post_path(post.author.name, post) %>
 
   <% if current_user == post.author %>
       <%= link_to '<span class="glyphicon glyphicon-pencil small"></span>'.html_safe,
