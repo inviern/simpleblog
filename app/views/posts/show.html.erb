@@ -35,24 +35,9 @@
         <%= link_to "Log in to leave a comment", login_path %>
     <% end %>
     <hr>
+
     <% if @post.comments.any? %>
-      <% @post.comments.order(created_at: :asc).each do |comment| %>
-        <div class="media">
-          <div class="media-body">
-            <h4 class="media-heading">
-              <%= link_to comment.author.name, user_path(comment.author) %>
-              <small><%= comment.created_at.to_datetime.to_s(:long) %></small>
-            </h4>
-            <%= comment.text %>
-            <% if current_user == comment.author %>
-            <small>
-              <%= link_to "Delete", comment_path(comment), method: :delete %>
-            </small>
-            <% end %>
-          </div>
-        </div>
-        <hr>
-      <% end %>
+      <%= render @post.comments.order(created_at: :asc) %>
     <% end %>
 
     <div class="btn-container">

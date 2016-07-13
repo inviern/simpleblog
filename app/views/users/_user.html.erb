@@ -1,0 +1,11 @@
+<div class="media">
+  <div class="media-body">
+    <h4 class="media-heading">
+      <%= link_to user.name, user_path(user) %>
+    </h4>
+    <small>
+      registered at <%= user.created_at.to_datetime.to_s(:long) %>
+    </small>
+  </div>
+</div>
+<hr>
