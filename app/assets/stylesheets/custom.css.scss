@@ -52,6 +52,10 @@ a:hover {
   border-color: #a94442;
 }
 
+.form-control[disabled] {
+  cursor: default!important;
+}
+
 /* Posts */
 .post-datetime {
   color: #777;

@@ -13,6 +13,8 @@ gem 'sorcery'
 gem 'bootstrap-sass', '3.3.6'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
+gem 'carrierwave'
+gem 'mini_magick'
 
 group :development, :test do
   gem 'sqlite3'

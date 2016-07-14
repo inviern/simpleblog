@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
 
   authenticates_with_sorcery!
 
+  mount_uploader :picture, PictureUploader
+
   before_save :downcase_email
 
   validates :name,
@@ -28,10 +30,18 @@ class User < ActiveRecord::Base
 
   validates :password_confirmation, presence: true
 
+  validate :picture_size
+
   private
 
   def downcase_email
     self.email = email.downcase
+  end
+
+  def picture_size
+    if picture.size > 2.megabytes
+      errors.add(:picture, 'should be less than 2 MB')
+    end
   end
 
 end

@@ -6,11 +6,15 @@
       <%= @author.name %>'s blog
       <small>Recent posts</small>
     </h1>
-    <div class="btn-container">
-      <p class="lead">
-        <%= link_to '<span class="glyphicon glyphicon-user small"></span> Profile'.html_safe,
-                    user_path(@author) %>
+    <div class="media lead">
+      <%= link_to image_tag(@author.picture.url, class: 'media-object'),
+                  user_path(@author), class: 'pull-left' %>
+      <div class="media-body">
+        <p>
+          <%= link_to 'Profile'.html_safe,
+                      user_path(@author) %>
         </p>
+      </div>
     </div>
     <hr>
 

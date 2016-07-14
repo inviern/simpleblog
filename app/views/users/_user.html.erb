@@ -1,4 +1,7 @@
 <div class="media">
+  <span class="pull-left">
+    <%= image_tag user.picture.url, class: 'media-object' %>
+  </span>
   <div class="media-body">
     <h4 class="media-heading">
       <%= link_to user.name, user_path(user) %>

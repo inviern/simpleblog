@@ -1,10 +1,15 @@
-<h2>
-  <%= link_to post.title, blog_post_path(author: post.author.name,
-                                         id: post) %>
-</h2>
-<p class="lead">
-  by <%= link_to post.author.name, blog_path(post.author.name) %>
-</p>
+<div class="media">
+  <%= link_to image_tag(post.author.picture.url, class: 'media-object'),
+              user_path(post.author), class: 'pull-left' %>
+  <div class="media-body">
+    <h2 class="media-heading">
+      <%= link_to post.title, blog_post_path(post.author.name, post) %>
+    </h2>
+    <p class="lead">
+      by <%= link_to post.author.name, blog_path(post.author.name) %>
+    </p>
+  </div>
+</div>
 <p class="post-datetime">
   <span class="glyphicon glyphicon-time"></span>
   <%= post.created_at.to_datetime.to_s(:long) %>

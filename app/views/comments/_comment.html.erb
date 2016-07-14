@@ -1,4 +1,7 @@
 <div class="media">
+  <span class="pull-left">
+    <%= image_tag comment.author.picture.url, class: 'media-object' %>
+  </span>
   <div class="media-body">
     <h4 class="media-heading">
       <%= link_to comment.author.name, user_path(comment.author) %>

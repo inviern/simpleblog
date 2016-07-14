@@ -3,9 +3,15 @@
 <div class="row">
   <div class="col-lg-8">
     <h1 class="page-header"><%= @post.title %></h1>
-    <p class="lead">
-      by <%= link_to @post.author.name, blog_path(@post.author.name) %>
-    </p>
+    <div class="media lead">
+      <%= link_to image_tag(@post.author.picture.url, class: 'media-object'),
+                  user_path(@post.author), class: 'pull-left' %>
+      <div class="media-body">
+        <p>
+          by <%= link_to @post.author.name, blog_path(@post.author.name) %>
+        </p>
+      </div>
+    </div>
     <p class="post-datetime">
       <span class="glyphicon glyphicon-time"></span>
       <%= @post.created_at.to_datetime.to_s(:long) %>

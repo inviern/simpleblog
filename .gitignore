@@ -20,3 +20,5 @@
 .byebug_history
 simpleblog-layout
 .rubocop.yml
+
+/public/uploads
